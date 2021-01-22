@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/rollup-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Utilities and config files for working with rollup.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
