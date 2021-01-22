@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/ts-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utilities and configs for working with typescript.",
   "main": "./tsconfig.json",
   "scripts": {},
@@ -22,7 +22,5 @@
   "bugs": {
     "url": "https://github.com/ALMaclaine/almaclaine-ts-config/issues"
   },
-  "homepage": "https://github.com/ALMaclaine/almaclaine-ts-config#readme",
-  "dependencies": {},
-  "devDependencies": {}
+  "homepage": "https://github.com/ALMaclaine/almaclaine-ts-config#readme"
 }
