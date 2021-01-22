@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ALMaclaine/almaclaine-ts-config.git"
+    "url": "git+https://github.com/ALMaclaine/almaclaine-package-mono-repo.git"
   },
   "files": [
     "tsconfig.json"
@@ -20,7 +20,7 @@
   "author": "Alessandro MacLaine",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ALMaclaine/almaclaine-ts-config/issues"
+    "url": "https://github.com/ALMaclaine/almaclaine-package-mono-repo/issues"
   },
-  "homepage": "https://github.com/ALMaclaine/almaclaine-ts-config#readme"
+  "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo#readme"
 }
