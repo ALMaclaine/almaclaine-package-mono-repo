@@ -12,9 +12,10 @@
     "clean:build": "npm run clean",
     "clean": "npx rimraf dist",
     "rollup": "rollup -c ./rollup.config.js",
-    "build": "npm run test && npm run clean && npm run compile && npm run rollup",
+    "build": "npm run test && npm run clean && npm run compile && npm run rollup && npm run addShebang",
     "compile": "tsc --outDir dist --project tsconfig.build.json",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "addShebang": "node addShebang.js"
   },
   "repository": {
     "type": "git",
