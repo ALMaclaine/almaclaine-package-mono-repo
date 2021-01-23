@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils/fs-utils Has Correct API 1`] = `
+Array [
+  "join",
+  "resolve",
+  "existsSync",
+  "copyFileSync",
+  "isHidden",
+  "createReadStream",
+  "makeCwdRelPath",
+  "isDirectorySync",
+  "readDirectorySync",
+  "makeDirectorySync",
+  "importJson",
+  "readFileAsStringSync",
+  "readFileSync",
+  "writeFileAsStringSync",
+  "doesNotExistError",
+  "alreadyExistsError",
+  "isNotDirectoryError",
+  "isDirectoryError",
+  "isNotJsonFilError",
+]
+`;
