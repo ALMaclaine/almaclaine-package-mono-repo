@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/npm-utils",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Set of utilities for working with npm and npm packages.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
