@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/init-package",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Script for creating new packages with necessary boilerplate.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
