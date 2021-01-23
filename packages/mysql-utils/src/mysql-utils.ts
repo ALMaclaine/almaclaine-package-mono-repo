@@ -50,14 +50,6 @@ export async function idExistsInTable(dbInfo: ConnectionInfo, table: string, id:
     return (await execute(dbInfo, sql, [id])).length === 1;
 }
 
-export async function addToTable(dbInfo: ConnectionInfo, table: string, itemName: string) {
-    const sql = `INSERT INTO ${table} (id, name) VALUES (?, ?);`;
-    let id = makeId();
-    while (await idExistsInTable(dbInfo, table, id)) id = makeId();
-    await execute(dbInfo, sql, [id, itemName]);
-    return id;
-}
-
 export async function getFromTable<T extends object>(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `SELECT * FROM ${table} WHERE id = ? LIMIT 1`;
     return ((await execute(dbInfo, sql, [id]))[0] as T) || null;
