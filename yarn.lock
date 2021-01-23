@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@almaclaine/fs-utils@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@almaclaine/fs-utils/-/fs-utils-0.0.1.tgz#05ff278744ab5c055ab8cc9e64c5d7b2fe746fad"
+  integrity sha512-SSX2suAWhOkOe85CJN02xMXodlsVFredBCD7UDnd9CCeKp2IfaB+KMh9bOiSONYQx9NkvE/QCrCumsHLK4KWPw==
+
 "@almaclaine/rollup-config@^0.0.2":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@almaclaine/rollup-config/-/rollup-config-0.0.2.tgz#5d86cf979a04b860da8dce3d780926cd8368d12e"
@@ -3313,6 +3318,11 @@ define-property@^2.0.2:
   dependencies:
     is-descriptor "^1.0.2"
     isobject "^3.0.1"
+
+degit@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/degit/-/degit-2.8.0.tgz#ac0bff89987735ab19d02338fa8717d16137ea68"
+  integrity sha512-nxQr1Ep4NSGDIqQ3HSMNgnPYaxPfPhHdrpgSNO2EczO86zN7NJJ1i/59GM25vgC45ANQUazZ/3Z+iyeZCmGwhg==
 
 delayed-stream@~1.0.0:
   version "1.0.0"
@@ -6841,6 +6851,11 @@ readdir-scoped-modules@^1.0.0:
     dezalgo "^1.0.0"
     graceful-fs "^4.1.2"
     once "^1.3.0"
+
+readline-promise@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/readline-promise/-/readline-promise-1.0.5.tgz#26ccac73b9124d5c07f7e8398fe5d7fb1e6b198b"
+  integrity sha512-rlqCVq6aaHxJCOJ0CzDHUi9Kj9JPBpnGFkdl6JefVjy0O/dGuBP+CovaHfaftUwElUlIeUs0E/a3Z5y45vRTVA==
 
 redent@^1.0.0:
   version "1.0.0"
