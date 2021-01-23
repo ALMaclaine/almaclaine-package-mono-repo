@@ -1,15 +1,6 @@
 import {ConnectionManager} from './ConnectionManager';
 import {ConnectionInfo} from './types';
-
-function makeId() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let result = '';
-    const len = characters.length;
-    for (let i = 0; i < 16; i++) {
-        result += characters.charAt(Math.floor(Math.random() * len));
-    }
-    return result;
-}
+import * as EmailValidator from "email-validator";
 
 async function execute(connectionInfo: ConnectionInfo, sql: string, args: Array<any> = []): Promise<Array<object>> {
     const connection = await ConnectionManager.get(connectionInfo);
@@ -71,4 +62,8 @@ export async function listFromTable<T extends object>(
 export async function deleteFromTable(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `DELETE FROM ${table} WHERE id=?`;
     await execute(dbInfo, sql, [id]);
+}
+
+export function validateEmail(email) {
+    return EmailValidator.validate(email);
 }

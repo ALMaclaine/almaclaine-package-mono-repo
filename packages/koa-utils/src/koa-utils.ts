@@ -1,8 +1,10 @@
+import {validateEmail as validateEmailBoolean} from '@almaclaine/mysql-utils'
 import {appendFileSync} from "fs";
 
 export const Errors = {
     MissingQueryParameter: 'MissingQueryParameter',
-    MissingBodyProperty: 'MissingBodyProperty'
+    MissingBodyProperty: 'MissingBodyProperty',
+    InvalidEmail: 'InvalidEmail'
 }
 
 export function errorHandler(errorSet: Set<String>, unknownErrorLogFilePath: string, knownErrorLogFilePath: string) {
@@ -83,5 +85,11 @@ export function validateBodyProps(props) {
     return async function validateProps(ctx, next) {
         _allKeysInArray(ctx.request.body, props, Errors.MissingBodyProperty);
         await next();
+    }
+}
+
+export function validateEmail(email) {
+    if (!validateEmailBoolean(email)) {
+        throw createError(Errors.InvalidEmail, `${Errors.InvalidEmail}. Must provide valid email.`);
     }
 }
