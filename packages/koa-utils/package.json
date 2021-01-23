@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/koa-utils",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "koa utilities",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -32,7 +32,6 @@
     "url": "https://github.com/ALMaclaine/almaclaine-package-mono-repo/issues"
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo",
-  "dependencies": {},
   "devDependencies": {
     "@almaclaine/rollup-config": "^0.0.2",
     "@almaclaine/ts-config": "^0.0.1",
