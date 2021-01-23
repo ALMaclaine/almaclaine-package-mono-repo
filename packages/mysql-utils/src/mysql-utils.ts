@@ -26,16 +26,35 @@ execute.destroyConnections = ConnectionManager.destroy;
 
 export {execute};
 
+export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: string, tableQueries: string[]) {
+    if (!dbInfo.host) throw new Error('Must provide host name');
+    if (!dbInfo.password)
+        throw new Error('Must provide password (environment variable recommended)');
+    if (!dbInfo.user) throw new Error('Must provide user');
+
+    const database = dbInfo.database || dbDefaultName;
+    await execute(
+        { ...dbInfo, database: '' },
+        `CREATE DATABASE IF NOT EXISTS ${database};`,
+    );
+
+    for(const queries of tableQueries) {
+        await execute({ ...dbInfo, database }, queries);
+    }
+
+    execute.destroyConnections();
+}
+
 export async function idExistsInTable(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `SELECT id FROM ${table} WHERE id = ? LIMIT 1;`;
     return (await execute(dbInfo, sql, [id])).length === 1;
 }
 
-export async function addToTable(dbInfo: ConnectionInfo, table: string, setName: string) {
+export async function addToTable(dbInfo: ConnectionInfo, table: string, itemName: string) {
     const sql = `INSERT INTO ${table} (id, name) VALUES (?, ?);`;
     let id = makeId();
     while (await idExistsInTable(dbInfo, table, id)) id = makeId();
-    await execute(dbInfo, sql, [id, setName]);
+    await execute(dbInfo, sql, [id, itemName]);
     return id;
 }
 
