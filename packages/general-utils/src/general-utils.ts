@@ -1,4 +1,4 @@
-import * as EmailValidator from "email-validator";
+import {validate} from "email-validator";
 import {ALMError} from "@almaclaine/error-utils";
 
 export const ErrorTypes = {
@@ -12,7 +12,7 @@ export class InvalidEmail extends ALMError {
 }
 
 export function validateEmail(email) {
-    return EmailValidator.validate(email);
+    return validate(email);
 }
 
 export function makeId(idLength: number = 16) {
