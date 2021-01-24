@@ -65,7 +65,7 @@ export async function idExistsInTable(dbInfo: ConnectionInfo, table: string, id:
     return (await execute(dbInfo, sql, [id])).length === 1;
 }
 
-export async function getFromTable<T extends object>(dbInfo: ConnectionInfo, table: string, id: string) {
+export async function getFromTableById<T extends object>(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `SELECT * FROM ${table} WHERE id = ? LIMIT 1`;
     return ((await execute(dbInfo, sql, [id]))[0] as T) || null;
 }
@@ -83,7 +83,7 @@ export async function listFromTable<T extends object>(
     );
 }
 
-export async function deleteFromTable(dbInfo: ConnectionInfo, table: string, id: string) {
+export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `DELETE FROM ${table} WHERE id=?`;
     await execute(dbInfo, sql, [id]);
 }
