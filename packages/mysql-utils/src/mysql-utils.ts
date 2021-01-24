@@ -3,7 +3,7 @@ import {ConnectionInfo} from './types';
 import {ALMError} from '@almaclaine/error-utils';
 import {promises as fs} from 'fs';
 import {join} from 'path';
-import * as pkgDir from "pkg-dir";
+const pkgDir = require("pkg-dir");
 
 export const ErrorTypes = {
     MysqlMissingHostName: 'MysqlMissingHostName',
