@@ -4,7 +4,7 @@ exports[`koa-utils Has Correct API 1`] = `
 Array [
   "ErrorTypes",
   "MissingQueryParameterError",
-  "MissingBodyProperty",
+  "MissingBodyPropertyError",
   "errorHandler",
   "validateQueryParamsAll",
   "validateQueryParamsAny",
