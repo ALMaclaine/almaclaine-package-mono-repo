@@ -11,19 +11,19 @@ export const ErrorTypes = {
     MysqlMissingUser: 'MysqlMissingUser'
 }
 
-export class MysqlMissingHostName extends ALMError {
+export class MysqlMissingHostNameError extends ALMError {
     constructor(message: string) {
         super(message, ErrorTypes.MysqlMissingHostName);
     }
 }
 
-export class MysqlMissingPassword extends ALMError {
+export class MysqlMissingPasswordError extends ALMError {
     constructor(message: string) {
         super(message, ErrorTypes.MysqlMissingPassword);
     }
 }
 
-export class MysqlMissingUser extends ALMError {
+export class MysqlMissingUserError extends ALMError {
     constructor(message: string) {
         super(message, ErrorTypes.MysqlMissingUser);
     }
@@ -45,10 +45,10 @@ execute.destroyConnections = ConnectionManager.destroy;
 export {execute};
 
 export function validateConnectionInfo(dbInfo: ConnectionInfo) {
-    if (!dbInfo.host) throw new MysqlMissingHostName('Must provide host name');
+    if (!dbInfo.host) throw new MysqlMissingHostNameError('Must provide host name');
     if (!dbInfo.password)
-        throw new MysqlMissingPassword('Must provide password (environment variable recommended)');
-    if (!dbInfo.user) throw new MysqlMissingUser('Must provide user');
+        throw new MysqlMissingPasswordError('Must provide password (environment variable recommended)');
+    if (!dbInfo.user) throw new MysqlMissingUserError('Must provide user');
 }
 
 export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: string, tableQueries: string[]) {

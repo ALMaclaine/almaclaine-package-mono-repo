@@ -13,7 +13,7 @@ export class MissingQueryParameterError extends ALMError {
     }
 }
 
-export class MissingBodyProperty extends ALMError {
+export class MissingBodyPropertyError extends ALMError {
     constructor(message: string) {
         super(message, ErrorTypes.MissingBodyProperty);
     }
@@ -99,7 +99,7 @@ export function validateBodyProps(props) {
     return async function validateProps(ctx, next) {
         const {truth, values} = _allKeysInArray(ctx.request.query, props);
         if(!truth) {
-            throw new MissingBodyProperty(`Missing Body Properties: ${values.join(', ')}`);
+            throw new MissingBodyPropertyError(`Missing Body Properties: ${values.join(', ')}`);
         }
         await next();
     }
