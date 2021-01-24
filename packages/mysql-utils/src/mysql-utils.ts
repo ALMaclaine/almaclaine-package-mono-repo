@@ -1,6 +1,5 @@
 import {ConnectionManager} from './ConnectionManager';
 import {ConnectionInfo} from './types';
-import * as EmailValidator from "email-validator";
 
 async function execute(connectionInfo: ConnectionInfo, sql: string, args: Array<any> = []): Promise<Array<object>> {
     const connection = await ConnectionManager.get(connectionInfo);
@@ -62,8 +61,4 @@ export async function listFromTable<T extends object>(
 export async function deleteFromTable(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `DELETE FROM ${table} WHERE id=?`;
     await execute(dbInfo, sql, [id]);
-}
-
-export function validateEmail(email) {
-    return EmailValidator.validate(email);
 }
