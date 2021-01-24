@@ -69,12 +69,20 @@ export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: strin
 
 export async function idExistsInTable(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `SELECT id FROM ${table} WHERE id = ? LIMIT 1;`;
-    return (await execute(dbInfo, sql, [id])).length === 1;
+    return checkExists(await execute(dbInfo, sql, [id]));
+}
+
+export async function checkExists(objs: object[]) {
+    return objs.length === 1;
 }
 
 export async function getFromTableById<T extends object>(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `SELECT * FROM ${table} WHERE id = ? LIMIT 1`;
-    return ((await execute(dbInfo, sql, [id]))[0] as T) || null;
+    return getOneOrDefault<T>(await execute(dbInfo, sql, [id]), null);
+}
+
+export async function getOneOrDefault<T>(objs: object[], def: T) {
+    return (objs[0] as unknown) as T || def;
 }
 
 export async function listFromTable<T extends object>(
@@ -85,9 +93,11 @@ export async function listFromTable<T extends object>(
 ) {
     const sql = `SELECT * FROM ${table} LIMIT ? OFFSET ?`;
     const offset = `${limit * page}`;
-    return (
-        ((await execute(dbInfo, sql, [`${limit}`, offset])) as T[]) || []
-    );
+    return getListOrDefault<T>(await execute(dbInfo, sql, [`${limit}`, offset]), []);
+}
+
+export async function getListOrDefault<T>(objs: object[], def: T[]) {
+    return (objs[0] as unknown) as T[] || def;
 }
 
 export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string, id: string) {
