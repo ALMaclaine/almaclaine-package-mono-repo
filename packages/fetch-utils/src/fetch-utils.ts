@@ -11,7 +11,7 @@ export class FetchFailedError extends ALMError {
     }
 }
 
-export async function almFetch(url: string, options: {[key: string]: any}) {
+export async function almFetch(url: string, options: {[key: string]: any} = {}) {
     const res = await fetch(url, options);
     if(!res.ok) {
         throw new FetchFailedError(`Fetch failed with status code: ${res.status}`);
