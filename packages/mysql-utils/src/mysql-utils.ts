@@ -3,6 +3,7 @@ import {ConnectionInfo} from './types';
 import {ALMError} from '@almaclaine/error-utils';
 import {promises as fs} from 'fs';
 import {join} from 'path';
+import pkgDir from "pkg-dir";
 
 export const ErrorTypes = {
     MysqlMissingHostName: 'MysqlMissingHostName',
@@ -94,7 +95,7 @@ export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string,
 }
 
 export async function readSQLFiles(dir: string = 'sql') {
-    const dirFiles = await fs.readdir(join(__dirname, dir));
+    const dirFiles = await fs.readdir(join(await pkgDir(), 'src', dir));
     const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
     return await Promise.all(sqlFiles.map(async e => await fs.readFile(e, 'utf-8')));
 }
