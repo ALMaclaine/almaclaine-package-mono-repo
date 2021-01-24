@@ -95,20 +95,10 @@ export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string,
     await execute(dbInfo, sql, [id]);
 }
 
-export async function readSQLFiles(dir: string) {
-    const makePath = async (folder, file = '') => join(await pkgDir(dir), 'src', 'sql', folder, file);
+export async function readSQLTableFiles(dir: string) {
+    const makePath = async (file = '') => join(await pkgDir(dir), 'src', 'sql', 'table', file);
     const tablePath = await makePath('table');
-    const tableDirFiles = existsSync(tablePath) ? await fs.readdir(tablePath) : [];
-    const tableFiles = tableDirFiles.filter(e => /.+\.sql/.test(e));
-
-    const queryPath = await makePath('query');
-    const queryDirFiles = existsSync(queryPath) ? await fs.readdir(queryPath) : [];
-    const queryFiles = queryDirFiles.filter(e => /.+\.sql/.test(e));
-
-    const readFiles = (dir) => Promise.all(tableFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
-
-    return {
-        tables: await readFiles(tableFiles),
-        queries: await readFiles(queryFiles)
-    };
+    const dirFiles = existsSync(tablePath) ? await fs.readdir(tablePath) : [];
+    const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
+    return await Promise.all(sqlFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
 }
