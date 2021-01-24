@@ -1,6 +1,8 @@
 import {ConnectionManager} from './ConnectionManager';
 import {ConnectionInfo} from './types';
 import {ALMError} from '@almaclaine/error-utils';
+import {promises as fs} from 'fs';
+import {join} from 'path';
 
 export const ErrorTypes = {
     MysqlMissingHostName: 'MysqlMissingHostName',
@@ -41,16 +43,19 @@ execute.destroyConnections = ConnectionManager.destroy;
 
 export {execute};
 
-export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: string, tableQueries: string[]) {
+export function validateConnectionInfo(dbInfo: ConnectionInfo) {
     if (!dbInfo.host) throw new MysqlMissingHostName('Must provide host name');
     if (!dbInfo.password)
         throw new MysqlMissingPassword('Must provide password (environment variable recommended)');
     if (!dbInfo.user) throw new MysqlMissingUser('Must provide user');
+}
 
+export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: string, tableQueries: string[]) {
+    validateConnectionInfo(dbInfo);
     const database = dbInfo.database || dbDefaultName;
     await execute(
         {...dbInfo, database: ''},
-        `CREATE DATABASE IF NOT EXISTS ${database};`,
+        `CREATE DATABASE IF NOT EXISTS ${database};`
     );
 
     for (const queries of tableQueries) {
@@ -86,4 +91,10 @@ export async function listFromTable<T extends object>(
 export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string, id: string) {
     const sql = `DELETE FROM ${table} WHERE id=?`;
     await execute(dbInfo, sql, [id]);
+}
+
+export async function readSQLFiles(dir: string = 'sql') {
+    const dirFiles = await fs.readdir(join(__dirname, dir));
+    const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
+    return await Promise.all(sqlFiles.map(async e => await fs.readFile(e, 'utf-8')));
 }
