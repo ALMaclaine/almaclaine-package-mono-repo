@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch';
+const fetch = require('cross-fetch');
 import {ALMError} from "@almaclaine/error-utils";
 
 export const ErrorTypes = {
