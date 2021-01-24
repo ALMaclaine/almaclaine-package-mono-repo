@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/mysql-utils",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Utilities for working with mysql.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",

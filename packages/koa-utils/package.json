@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/koa-utils",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "koa utilities",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -44,7 +44,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@almaclaine/general-utils": "^0.0.7",
+    "@almaclaine/general-utils": "^0.0.8",
     "email-validator": "^2.0.4"
   },
   "gitHead": "c782b1eeb257632fb6ba7521ba84339b0a288799"
