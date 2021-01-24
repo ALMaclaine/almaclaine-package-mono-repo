@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/koa-utils",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "koa utilities",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
