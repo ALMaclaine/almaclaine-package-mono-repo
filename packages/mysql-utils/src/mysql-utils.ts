@@ -95,8 +95,8 @@ export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string,
 }
 
 export async function readSQLFiles(dir: string = 'sql') {
-    const makePath = async (file) => join(await pkgDir(), 'src', dir);
-    const dirFiles = await fs.readdir(await makePath(dir));
+    const makePath = async (file = '') => join(await pkgDir(), 'src', dir, file);
+    const dirFiles = await fs.readdir(await makePath());
     const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
     return await Promise.all(sqlFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
 }
