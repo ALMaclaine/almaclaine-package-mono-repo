@@ -35,7 +35,7 @@ async function execute(connectionInfo: ConnectionInfo, sql: string, args: Array<
     if (args.length > 0) {
         [rows] = await connection.execute(sql, args);
     } else {
-        [rows] = await connection.execute(sql);
+        [rows] = await connection.query(sql);
     }
     return rows;
 }
