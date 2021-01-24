@@ -46,5 +46,6 @@
   "dependencies": {
     "@almaclaine/general-utils": "^0.0.7",
     "email-validator": "^2.0.4"
-  }
+  },
+  "gitHead": "c782b1eeb257632fb6ba7521ba84339b0a288799"
 }

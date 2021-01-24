@@ -43,5 +43,6 @@
   "dependencies": {
     "@almaclaine/error-utils": "^0.0.2",
     "@almaclaine/koa-utils": "^0.0.15"
-  }
+  },
+  "gitHead": "c782b1eeb257632fb6ba7521ba84339b0a288799"
 }
