@@ -1,7 +1,8 @@
 import {ConnectionManager} from './ConnectionManager';
 import {ConnectionInfo} from './types';
 import {ALMError} from '@almaclaine/error-utils';
-import {promises as fs} from 'fs';
+import {promises as fs, existsSync} from 'fs';
+
 import {join} from 'path';
 const pkgDir = require("pkg-dir");
 
@@ -95,8 +96,19 @@ export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string,
 }
 
 export async function readSQLFiles(dir: string) {
-    const makePath = async (file = '') => join(await pkgDir(dir), 'src', 'sql', file);
-    const dirFiles = await fs.readdir(await makePath());
-    const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
-    return await Promise.all(sqlFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
+    const makePath = async (folder, file = '') => join(await pkgDir(dir), 'src', 'sql', folder, file);
+    const tablePath = await makePath('table');
+    const tableDirFiles = existsSync(tablePath) ? await fs.readdir(tablePath) : [];
+    const tableFiles = tableDirFiles.filter(e => /.+\.sql/.test(e));
+
+    const queryPath = await makePath('query');
+    const queryDirFiles = existsSync(queryPath) ? await fs.readdir(queryPath) : [];
+    const queryFiles = queryDirFiles.filter(e => /.+\.sql/.test(e));
+
+    const readFiles = (dir) => Promise.all(tableFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
+
+    return {
+        tables: await readFiles(tableFiles),
+        queries: await readFiles(queryFiles)
+    };
 }
