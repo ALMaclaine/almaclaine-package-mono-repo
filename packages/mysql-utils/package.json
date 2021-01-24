@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo#readme",
   "dependencies": {
+    "@almaclaine/error-utils": "^0.0.2",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {

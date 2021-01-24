@@ -2,6 +2,8 @@
 
 exports[`general-utils Has Correct API 1`] = `
 Array [
+  "ErrorTypes",
+  "InvalidEmail",
   "validateEmail",
 ]
 `;

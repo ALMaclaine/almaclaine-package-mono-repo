@@ -1,5 +1,30 @@
 import {ConnectionManager} from './ConnectionManager';
 import {ConnectionInfo} from './types';
+import {ALMError} from '@almaclaine/error-utils';
+
+export const ErrorTypes = {
+    MysqlMissingHostName: 'MysqlMissingHostName',
+    MysqlMissingPassword: 'MysqlMissingPassword',
+    MysqlMissingUser: 'MysqlMissingUser'
+}
+
+export class MysqlMissingHostName extends ALMError {
+    constructor(message: string) {
+        super(message, ErrorTypes.MysqlMissingHostName);
+    }
+}
+
+export class MysqlMissingPassword extends ALMError {
+    constructor(message: string) {
+        super(message, ErrorTypes.MysqlMissingPassword);
+    }
+}
+
+export class MysqlMissingUser extends ALMError {
+    constructor(message: string) {
+        super(message, ErrorTypes.MysqlMissingUser);
+    }
+}
 
 async function execute(connectionInfo: ConnectionInfo, sql: string, args: Array<any> = []): Promise<Array<object>> {
     const connection = await ConnectionManager.get(connectionInfo);
@@ -17,19 +42,19 @@ execute.destroyConnections = ConnectionManager.destroy;
 export {execute};
 
 export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: string, tableQueries: string[]) {
-    if (!dbInfo.host) throw new Error('Must provide host name');
+    if (!dbInfo.host) throw new MysqlMissingHostName('Must provide host name');
     if (!dbInfo.password)
-        throw new Error('Must provide password (environment variable recommended)');
-    if (!dbInfo.user) throw new Error('Must provide user');
+        throw new MysqlMissingPassword('Must provide password (environment variable recommended)');
+    if (!dbInfo.user) throw new MysqlMissingUser('Must provide user');
 
     const database = dbInfo.database || dbDefaultName;
     await execute(
-        { ...dbInfo, database: '' },
+        {...dbInfo, database: ''},
         `CREATE DATABASE IF NOT EXISTS ${database};`,
     );
 
-    for(const queries of tableQueries) {
-        await execute({ ...dbInfo, database }, queries);
+    for (const queries of tableQueries) {
+        await execute({...dbInfo, database}, queries);
     }
 
     execute.destroyConnections();

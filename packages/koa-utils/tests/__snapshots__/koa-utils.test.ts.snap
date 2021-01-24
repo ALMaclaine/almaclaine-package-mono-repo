@@ -5,7 +5,6 @@ Array [
   "ErrorTypes",
   "MissingQueryParameterError",
   "MissingBodyProperty",
-  "InvalidEmail",
   "errorHandler",
   "validateQueryParamsAll",
   "validateQueryParamsAny",

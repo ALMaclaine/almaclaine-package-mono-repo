@@ -1,11 +1,10 @@
-import {validateEmail as validateEmailBoolean} from '@almaclaine/general-utils'
-import {ALMError} from "error-utils/src/error-utils";
+import {validateEmail as validateEmailBoolean, InvalidEmail} from '@almaclaine/general-utils'
+import {ALMError} from "@almaclaine/error-utils";
 import {appendFileSync} from "fs";
 
 export const ErrorTypes = {
     MissingQueryParameter: 'MissingQueryParameter',
-    MissingBodyProperty: 'MissingBodyProperty',
-    InvalidEmail: 'InvalidEmail'
+    MissingBodyProperty: 'MissingBodyProperty'
 }
 
 export class MissingQueryParameterError extends ALMError {
@@ -17,12 +16,6 @@ export class MissingQueryParameterError extends ALMError {
 export class MissingBodyProperty extends ALMError {
     constructor(message: string) {
         super(message, ErrorTypes.MissingBodyProperty);
-    }
-}
-
-export class InvalidEmail extends ALMError {
-    constructor(message: string) {
-        super(message, ErrorTypes.InvalidEmail);
     }
 }
 
