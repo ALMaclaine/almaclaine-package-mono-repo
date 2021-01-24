@@ -1,4 +1,4 @@
-import {validate} from "email-validator";
+const {validate} = require("email-validator");
 import {ALMError} from "@almaclaine/error-utils";
 
 export const ErrorTypes = {
