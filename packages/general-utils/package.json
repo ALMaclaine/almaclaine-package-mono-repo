@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/general-utils",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "general-utils",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -42,6 +42,6 @@
   },
   "dependencies": {
     "@almaclaine/error-utils": "^0.0.2",
-    "@almaclaine/koa-utils": "^0.0.13"
+    "@almaclaine/koa-utils": "^0.0.14"
   }
 }
