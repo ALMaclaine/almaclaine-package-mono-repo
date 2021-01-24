@@ -1,10 +1,29 @@
-import {validateEmail as validateEmailBoolean} from '@almaclaine/mysql-utils'
+import {validateEmail as validateEmailBoolean} from '@almaclaine/general-utils'
+import {ALMError} from "error-utils/src/error-utils";
 import {appendFileSync} from "fs";
 
-export const Errors = {
+export const ErrorTypes = {
     MissingQueryParameter: 'MissingQueryParameter',
     MissingBodyProperty: 'MissingBodyProperty',
     InvalidEmail: 'InvalidEmail'
+}
+
+export class MissingQueryParameterError extends ALMError {
+    constructor(message: string) {
+        super(message, ErrorTypes.MissingQueryParameter);
+    }
+}
+
+export class MissingBodyProperty extends ALMError {
+    constructor(message: string) {
+        super(message, ErrorTypes.MissingBodyProperty);
+    }
+}
+
+export class InvalidEmail extends ALMError {
+    constructor(message: string) {
+        super(message, ErrorTypes.InvalidEmail);
+    }
 }
 
 export function errorHandler(errorSet: Set<String>, unknownErrorLogFilePath: string, knownErrorLogFilePath: string) {
@@ -41,55 +60,60 @@ export function errorHandler(errorSet: Set<String>, unknownErrorLogFilePath: str
     }
 }
 
-export function createError(error, message) {
-    return {
-        stacktrace: new Error(error),
-        message,
-        error
-    }
-}
-
-function _allKeysInArray(arr, keys, err) {
-    const missing = [];
+function _allKeysInArray(arr, keys) {
+    const values = [];
 
     for(const key of keys) {
         if(!(key in arr)) {
-            missing.push(key);
+            values.push(key);
         }
     }
 
-    if(missing.length > 0) {
-        throw createError(err,`${err}. Missing: ${missing.join(', ')}`);
+    return {
+        truth: values.length === 0,
+        values
     }
 }
 
-function _anyKeyInArray(arr, keys, err) {
-    if(!keys.some(e => e in arr)) throw createError(err,`${err}. Must have one of: ${keys.join(', ')}`);
+function _anyKeyInArray(arr, keys) {
+    return {
+        truth: keys.some(e => e in arr),
+        values: keys
+    }
 }
 
 export function validateQueryParamsAll(params) {
     return async function validateParams(ctx, next) {
-        _allKeysInArray(ctx.request.query, params, Errors.MissingQueryParameter);
+        const {truth, values} = _allKeysInArray(ctx.request.query, params);
+        if(!truth) {
+            throw new MissingQueryParameterError(`Missing Query Parameters: ${values.join(', ')}`);
+        }
         await next();
     }
 }
 
 export function validateQueryParamsAny(params) {
     return async function validateParams(ctx, next) {
-        _anyKeyInArray(ctx.request.query, params, Errors.MissingQueryParameter);
+        const {truth, values} = _anyKeyInArray(ctx.request.query, params);
+        if(!truth) {
+            throw new MissingQueryParameterError(`Missing Query Parameters, Must have one of: ${values.join(', ')}`);
+        }
         await next();
     }
 }
 
 export function validateBodyProps(props) {
     return async function validateProps(ctx, next) {
-        _allKeysInArray(ctx.request.body, props, Errors.MissingBodyProperty);
+        const {truth, values} = _allKeysInArray(ctx.request.query, props);
+        if(!truth) {
+            throw new MissingBodyProperty(`Missing Body Properties: ${values.join(', ')}`);
+        }
         await next();
     }
 }
 
 export function validateEmail(email) {
     if (!validateEmailBoolean(email)) {
-        throw createError(Errors.InvalidEmail, `${Errors.InvalidEmail}. Must provide valid email.`);
+        throw new InvalidEmail(`Invalid Email: Must provide valid email.`)
     }
 }

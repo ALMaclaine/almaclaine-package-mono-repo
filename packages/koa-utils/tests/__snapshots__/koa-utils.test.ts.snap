@@ -2,9 +2,11 @@
 
 exports[`koa-utils Has Correct API 1`] = `
 Array [
-  "Errors",
+  "ErrorTypes",
+  "MissingQueryParameterError",
+  "MissingBodyProperty",
+  "InvalidEmail",
   "errorHandler",
-  "createError",
   "validateQueryParamsAll",
   "validateQueryParamsAny",
   "validateBodyProps",

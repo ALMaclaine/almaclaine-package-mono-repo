@@ -1,1 +1,1 @@
-export * from './typescript-package-template';
+export * from './general-utils';

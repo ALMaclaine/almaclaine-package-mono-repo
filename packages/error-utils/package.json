@@ -1,17 +1,15 @@
 {
-  "name": "@almaclaine/koa-utils",
-  "version": "0.0.10",
-  "description": "koa utilities",
+  "name": "@almaclaine/error-utils",
+  "version": "0.0.1",
+  "description": "general-utils",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "lint": "tslint --fix './src/**/*.ts'",
     "test": "npx jest",
-    "clean:build": "npm run clean",
     "clean": "npx rimraf dist",
     "rollup": "rollup -c ./rollup.config.js",
-    "build": "npm run test && npm run clean && npm run compile && npm run rollup",
+    "build": "yarn run test && yarn run clean && yarn run compile && yarn run rollup",
     "compile": "tsc --outDir dist --project tsconfig.build.json",
     "prepublishOnly": "npm run build"
   },
@@ -23,8 +21,7 @@
     "dist"
   ],
   "keywords": [
-    "Koa",
-    "Utilities"
+    "General-utils"
   ],
   "author": "Alessandro Maclaine",
   "license": "MIT",
@@ -32,19 +29,16 @@
     "url": "https://github.com/ALMaclaine/almaclaine-package-mono-repo/issues"
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo",
+  "dependencies": {},
   "devDependencies": {
     "@almaclaine/rollup-config": "^0.0.4",
     "@almaclaine/ts-config": "^0.1.3",
-    "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
     "esm": "^3.2.25",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.3"
-  },
-  "dependencies": {
-    "@almaclaine/general-utils": "^0.0.2",
-    "email-validator": "^2.0.4"
+    "typescript": "^4.1.3",
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4"
   }
 }
