@@ -6,5 +6,7 @@ Array [
   "InvalidEmail",
   "validateEmail",
   "makeId",
+  "isMainProcess",
+  "timeNowString",
 ]
 `;

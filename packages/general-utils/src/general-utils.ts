@@ -15,12 +15,20 @@ export function validateEmail(email) {
     return EmailValidator.validate(email);
 }
 
-export function makeId() {
+export function makeId(idLength: number = 16) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     let result = '';
     const len = characters.length;
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < idLength; i++) {
         result += characters.charAt(Math.floor(Math.random() * len));
     }
     return result;
+}
+
+export function isMainProcess(filename) {
+    return require.main.filename === filename;
+}
+
+export function timeNowString() {
+    return (new Date()).toISOString().slice(0, 19);
 }
