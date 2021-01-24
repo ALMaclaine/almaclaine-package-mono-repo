@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetch-utils Has Correct API 1`] = `
+Array [
+  "ErrorTypes",
+  "FetchFailedError",
+  "almFetch",
+]
+`;
