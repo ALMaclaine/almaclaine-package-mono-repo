@@ -1,7 +1,7 @@
 import {ConnectionManager} from './ConnectionManager';
 import {ConnectionInfo} from './types';
 import {ALMError} from '@almaclaine/error-utils';
-import {promises as fs, existsSync} from 'fs';
+import {promises as fs, existsSync, readFileSync} from 'fs';
 
 import {join} from 'path';
 const pkgDir = require("pkg-dir");
@@ -111,4 +111,8 @@ export async function readSQLTableFiles(dir: string) {
     const dirFiles = existsSync(tablePath) ? await fs.readdir(tablePath) : [];
     const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
     return await Promise.all(sqlFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
+}
+
+export async function readQuery(dir: string, file: string) {
+    readFileSync(join(await pkgDir(dir), 'sql', 'query', file), 'utf-8');
 }
