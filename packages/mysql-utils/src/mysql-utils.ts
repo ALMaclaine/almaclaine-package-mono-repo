@@ -97,7 +97,7 @@ export async function listFromTable<T extends object>(
 }
 
 export async function getListOrDefault<T>(objs: object[], def: T[]) {
-    return (objs[0] as unknown) as T[] || def;
+    return (objs as unknown) as T[] || def;
 }
 
 export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string, id: string) {
