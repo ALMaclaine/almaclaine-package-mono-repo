@@ -113,6 +113,6 @@ export async function readSQLTableFiles(dir: string) {
     return await Promise.all(sqlFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
 }
 
-export async function readQuery(dir: string, file: string) {
-    readFileSync(join(await pkgDir(dir), 'sql', 'query', file), 'utf-8');
+export function readQuery(dir: string, file: string) {
+    return readFileSync(join(pkgDir.sync(dir), 'sql', 'query', file), 'utf-8');
 }

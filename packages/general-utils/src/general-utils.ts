@@ -30,6 +30,6 @@ export function isMainProcess(filename) {
 }
 
 export function timeNowString() {
-    const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
-    return (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+    const timeZoneOffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    return (new Date(Date.now() - timeZoneOffset)).toISOString().slice(0, -1);
 }
