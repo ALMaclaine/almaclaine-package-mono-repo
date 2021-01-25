@@ -107,7 +107,7 @@ export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string,
 
 export async function readSQLTableFiles(dir: string) {
     const makePath = async (file = '') => join(await pkgDir(dir), 'sql', 'table', file);
-    const tablePath = await makePath('table');
+    const tablePath = await makePath();
     const dirFiles = existsSync(tablePath) ? await fs.readdir(tablePath) : [];
     const sqlFiles = dirFiles.filter(e => /.+\.sql/.test(e));
     return await Promise.all(sqlFiles.map(async e => await fs.readFile(await makePath(e), 'utf-8')));
