@@ -1,6 +1,6 @@
 {
-  "name": "encryption-utils",
-  "version": "0.0.2",
+  "name": "@almaclaine/encryption-utils",
+  "version": "0.0.1",
   "description": "encryption-utils",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
