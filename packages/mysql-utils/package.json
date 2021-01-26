@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/mysql-utils",
-  "version": "0.1.28",
+  "version": "0.1.35",
   "description": "Utilities for working with mysql.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -48,5 +48,5 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   },
-  "gitHead": "3f04ab01bf8ee047f30854921d5ad2558c498f5b"
+  "gitHead": "a61906c77dfa7b4aa099a05157291360eee7311e"
 }

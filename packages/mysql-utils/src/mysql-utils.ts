@@ -67,42 +67,16 @@ export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: strin
     execute.destroyConnections();
 }
 
-export async function idExistsInTable(dbInfo: ConnectionInfo, table: string, id: string) {
-    const sql = `SELECT id FROM ${table} WHERE id = ? LIMIT 1;`;
-    return checkExists(await execute(dbInfo, sql, [id]));
-}
-
 export async function checkExists(objs: object[]) {
     return objs.length === 1;
-}
-
-export async function getFromTableById<T extends object>(dbInfo: ConnectionInfo, table: string, id: string) {
-    const sql = `SELECT * FROM ${table} WHERE id = ? LIMIT 1`;
-    return getOneOrDefault<T>(await execute(dbInfo, sql, [id]), null);
 }
 
 export async function getOneOrDefault<T>(objs: object[], def: T) {
     return (objs[0] as unknown) as T || def;
 }
 
-export async function listFromTable<T extends object>(
-    dbInfo: ConnectionInfo,
-    table: string,
-    page = 0,
-    limit = 20,
-) {
-    const sql = `SELECT * FROM ${table} LIMIT ? OFFSET ?`;
-    const offset = `${limit * page}`;
-    return getListOrDefault<T>(await execute(dbInfo, sql, [`${limit}`, offset]), []);
-}
-
 export async function getListOrDefault<T>(objs: object[], def: T[]) {
     return (objs as unknown) as T[] || def;
-}
-
-export async function deleteFromTableById(dbInfo: ConnectionInfo, table: string, id: string) {
-    const sql = `DELETE FROM ${table} WHERE id=?`;
-    await execute(dbInfo, sql, [id]);
 }
 
 export async function readSQLTableFiles(dir: string) {
