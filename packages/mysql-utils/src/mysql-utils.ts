@@ -63,8 +63,6 @@ export async function setupDatabase(dbInfo: ConnectionInfo, dbDefaultName: strin
     for (const queries of tableQueries) {
         await execute({...dbInfo, database}, queries);
     }
-
-    execute.destroyConnections();
 }
 
 export async function checkExists(objs: object[]) {
