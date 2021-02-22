@@ -32,7 +32,7 @@ export async function initPackage(folderName: string) {
         throw Error(`Failed to create directory: ${folderName}.\n${alreadyExistsError(dirPath)}.`);
     }
 
-    unlinkSync(join(dirPath, 'src', 'typescript-package-template.ts'));
+    unlinkSync(join(dirPath, 'src', 'postgres-utils.ts'));
     writeFileAsStringSync(join(dirPath, 'src', `${folderName}.ts`), '');
 
     unlinkSync(join(dirPath, 'tests', 'typescript-package-template.test.ts'));

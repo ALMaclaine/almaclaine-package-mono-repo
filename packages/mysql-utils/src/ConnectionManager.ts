@@ -30,3 +30,7 @@ export class ConnectionManager {
         }
     }
 }
+
+process.once('SIGTERM', () => {
+    ConnectionManager.destroy();
+});
