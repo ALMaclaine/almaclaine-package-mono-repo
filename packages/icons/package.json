@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/icons",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "icons",
   "repository": {
@@ -22,14 +22,14 @@
   },
   "homepage": "",
   "devDependencies": {
-    "@almaclaine/rollup-config": "^0.0.2",
-    "@almaclaine/ts-config": "^0.0.1",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.9",
+    "@almaclaine/rollup-config": "^0.0.8",
+    "@almaclaine/ts-config": "^0.1.4",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.41",
     "esm": "^3.2.25",
     "jest": "^26.6.3",
-    "ts-jest": "^26.4.4",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.1.2"
+    "ts-jest": "^26.5.5",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   }
 }
