@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@almaclaine/error-utils@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@almaclaine/error-utils/-/error-utils-0.0.5.tgz#b74ed65e51c0b7c3336d04dea4c6b2bbf1d9d4a9"
-  integrity sha512-3N58rbSfFYgccW3cya3MoMMl/RgIewae1TY90KSQ2RXCRAtvHbHVDFKsH+MMgw1qsYjXPNj9XmkYGO0ByM5z9g==
-
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13":
   version "7.12.13"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.12.13.tgz"
