@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/icons",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "icons",
   "repository": {
@@ -22,8 +22,8 @@
   },
   "homepage": "",
   "devDependencies": {
-    "@almaclaine/rollup-config": "^0.0.8",
-    "@almaclaine/ts-config": "^0.1.4",
+    "@almaclaine/rollup-config": "^0.0.9",
+    "@almaclaine/ts-config": "^0.1.5",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "esm": "^3.2.25",

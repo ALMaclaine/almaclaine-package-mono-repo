@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/ts-config",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Utilities and configs for working with typescript.",
   "main": "./tsconfig.json",
   "scripts": {},

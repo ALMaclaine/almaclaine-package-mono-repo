@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/koa-utils",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "koa utilities",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -33,8 +33,8 @@
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo",
   "devDependencies": {
-    "@almaclaine/rollup-config": "^0.0.8",
-    "@almaclaine/ts-config": "^0.1.4",
+    "@almaclaine/rollup-config": "^0.0.9",
+    "@almaclaine/ts-config": "^0.1.5",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "esm": "^3.2.25",
@@ -44,7 +44,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@almaclaine/general-utils": "^0.0.22",
+    "@almaclaine/general-utils": "^0.0.23",
     "email-validator": "^2.0.4"
   },
   "gitHead": "1e36d81de00dcb0184ecb86df9e315ecdcdc2538"
