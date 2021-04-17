@@ -34,7 +34,7 @@
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo",
   "devDependencies": {
     "@almaclaine/rollup-config": "^0.0.9",
-    "@almaclaine/ts-config": "^0.1.5",
+    "@almaclaine/ts-config": "^0.1.6",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "esm": "^3.2.25",
@@ -47,5 +47,5 @@
     "@almaclaine/general-utils": "^0.0.23",
     "email-validator": "^2.0.4"
   },
-  "gitHead": "1e36d81de00dcb0184ecb86df9e315ecdcdc2538"
+  "gitHead": "0bfbd0abb6edaa296f3a9f4e0bb3b5cf7bd7ca98"
 }
