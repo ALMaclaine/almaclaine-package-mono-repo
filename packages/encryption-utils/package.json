@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/encryption-utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "encryption-utils",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -44,5 +44,6 @@
     "ts-jest": "^26.5.5",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  }
+  },
+  "gitHead": "1e36d81de00dcb0184ecb86df9e315ecdcdc2538"
 }

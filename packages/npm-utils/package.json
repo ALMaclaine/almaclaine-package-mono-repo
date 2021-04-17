@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/npm-utils",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Set of utilities for working with npm and npm packages.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo#readme",
   "dependencies": {
-    "@almaclaine/fs-utils": "^0.0.7",
+    "@almaclaine/fs-utils": "^0.0.8",
     "degit": "^2.8.4",
     "readline-promise": "^1.0.5",
     "validate-npm-package-name": "^3.0.0"
@@ -51,5 +51,6 @@
     "ts-jest": "^26.5.5",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  }
+  },
+  "gitHead": "1e36d81de00dcb0184ecb86df9e315ecdcdc2538"
 }
