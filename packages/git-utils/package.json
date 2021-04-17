@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/git-utils",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Utilities for working with git.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",

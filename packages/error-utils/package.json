@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/error-utils",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "general-utils",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",

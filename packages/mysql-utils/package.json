@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/mysql-utils",
-  "version": "0.1.43",
+  "version": "0.1.44",
   "description": "Utilities for working with mysql.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo#readme",
   "dependencies": {
-    "@almaclaine/error-utils": "^0.0.6",
+    "@almaclaine/error-utils": "^0.0.7",
     "mysql2": "^2.2.5",
     "pkg-dir": "^5.0.0"
   },

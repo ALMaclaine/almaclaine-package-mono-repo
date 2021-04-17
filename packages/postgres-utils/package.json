@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/postgres-utils",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "utils for interacting with postgres-database",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/general-utils",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "general-utils",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -41,7 +41,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@almaclaine/error-utils": "^0.0.6"
+    "@almaclaine/error-utils": "^0.0.7"
   },
   "gitHead": "1e36d81de00dcb0184ecb86df9e315ecdcdc2538"
 }
