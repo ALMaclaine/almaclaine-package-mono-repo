@@ -1,13 +1,22 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es2017",
-    "sourceMap": true,
-    "composite": true,
-    "declarationMap": true,
-    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true
+    "isolatedModules": true,
+    "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "lib": [
+      "es2017"
+    ],
   }
 }
