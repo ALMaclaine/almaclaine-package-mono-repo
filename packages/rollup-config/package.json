@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/rollup-config",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Utilities and config files for working with rollup.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -44,7 +44,7 @@
     "rollup": "^2.45.2"
   },
   "devDependencies": {
-    "@almaclaine/ts-config": "^0.1.6",
+    "@almaclaine/ts-config": "^0.1.7",
     "@types/jest": "^26.0.22",
     "esm": "^3.2.25",
     "jest": "^26.6.3",

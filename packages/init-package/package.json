@@ -1,6 +1,6 @@
 {
   "name": "@almaclaine/init-package",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Script for creating new packages with necessary boilerplate.",
   "main": "dist/index.bundle.js",
   "module": "dist/index.js",
@@ -40,11 +40,11 @@
   },
   "homepage": "https://github.com/ALMaclaine/almaclaine-package-mono-repo#readme",
   "dependencies": {
-    "@almaclaine/npm-utils": "^0.0.19"
+    "@almaclaine/npm-utils": "^0.0.20"
   },
   "devDependencies": {
-    "@almaclaine/rollup-config": "^0.0.9",
-    "@almaclaine/ts-config": "^0.1.6",
+    "@almaclaine/rollup-config": "^0.0.10",
+    "@almaclaine/ts-config": "^0.1.7",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "esm": "^3.2.25",
