@@ -2,7 +2,8 @@ import {
     nodeResolve
 } from '@rollup/plugin-node-resolve';
 import {join} from 'path';
-const camelcase = require('camelcase');
+import camelcase from 'camelcase';
+import * as fs from "fs";
 const builtinModules = [
     "assert",
     "async_hooks",
@@ -44,21 +45,21 @@ const builtinModules = [
     "zlib"
 ];
 
-const {name, dependencies, peerDependencies} = require(join(process.cwd(), './package.json'));
+const {name, dependencies, peerDependencies} = JSON.parse(fs.readFileSync(join(process.cwd(), './package.json'), 'utf-8'));
 
 const external = Object.keys({...dependencies, ...peerDependencies}).concat(builtinModules);
-const globals = external.reduce((a, c: string) => {
+const globals = external.reduce((a: {[key: string]: string}, c: string) => {
     a[c] = camelcase(c);
     return a;
 }, {});
 
-function generateOutput(file: string, name: string) {
+function generateOutput(file: string, outName: string) {
     return {
         file: `dist/${file}.bundle.js`,
         format: 'cjs',
-        name: camelcase(name),
+        name: camelcase(outName),
         globals
-    }
+    };
 }
 
 export const PackageConfig = {
@@ -75,4 +76,4 @@ export const ScriptConfig = {
         ...PackageConfig.output,
         generateOutput('exec', name)
     ]
-}
+};

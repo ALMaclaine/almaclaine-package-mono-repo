@@ -1,9 +1,9 @@
-const {validate} = require("email-validator");
+import {validate} from "email-validator";
 import {ALMError} from "@almaclaine/error-utils";
 
 export const ErrorTypes = {
     InvalidEmail: 'InvalidEmail'
-}
+};
 
 export class InvalidEmail extends ALMError {
     constructor(message: string) {
@@ -11,7 +11,7 @@ export class InvalidEmail extends ALMError {
     }
 }
 
-export function validateEmail(email) {
+export function validateEmail(email: string) {
     return validate(email);
 }
 
@@ -25,11 +25,15 @@ export function makeId(idLength: number = 16) {
     return result;
 }
 
-export function isMainProcess(filename) {
-    return require.main.filename === filename;
+export function isMainProcess(filename: string) {
+    if(require.main) {
+        return require.main.filename === filename;
+    } else {
+        return false;
+    }
 }
 
 export function timeNowString() {
-    const timeZoneOffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+    const timeZoneOffset = (new Date()).getTimezoneOffset() * 60000;
     return (new Date(Date.now() - timeZoneOffset)).toISOString().slice(0, -1);
 }

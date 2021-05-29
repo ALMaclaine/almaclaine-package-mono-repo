@@ -1,7 +1,7 @@
 import {initPackage} from '@almaclaine/npm-utils';
 
 // TODO: Consider moving into separate package.
-const errorExit = (err) => {
+const errorExit = (err: string) => {
     console.error(err);
     process.exit(1);
 }

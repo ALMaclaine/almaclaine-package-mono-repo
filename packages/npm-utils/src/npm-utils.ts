@@ -6,11 +6,20 @@ import {
     writeFileAsStringSync,
 } from '@almaclaine/fs-utils';
 
+import readline from 'readline';
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+import util from 'util';
+const question: (str: string) => Promise<string> = util.promisify(rl.question).bind(rl);
+
 import validPackage from "validate-npm-package-name";
 
 import {unlinkSync} from "fs";
 
-import readline from "readline-promise";
 import {execSync} from "child_process";
 
 const execSyncToString = (cmd: string) => execSync(cmd).toString('utf-8').trim();
@@ -38,10 +47,10 @@ export async function initPackage(folderName: string) {
     unlinkSync(join(dirPath, 'tests', 'typescript-package-template.test.ts'));
     writeFileAsStringSync(join(dirPath, 'tests', `${folderName}.test.ts`), '');
 
-    const desc = await rl.questionAsync('Enter a description for the package: ');
-    const author = await rl.questionAsync('Package Author: ');
-    const keywords = await rl.questionAsync('Enter package keywords separated by space: ');
-    const git = await rl.questionAsync('Github url (no .git, optional): ');
+    const desc: tring = await question('Enter a description for the package: ');
+    const author = await question('Package Author: ');
+    const keywords = await question('Enter package keywords separated by space: ');
+    const git = await question('Github url (no .git, optional): ');
 
     const pack = require(join(dirPath, 'package.json'));
     pack.name = `${folderName}`;
