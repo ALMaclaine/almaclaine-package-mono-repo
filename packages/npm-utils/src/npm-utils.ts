@@ -14,7 +14,6 @@ const rl = readline.createInterface({
 });
 
 import util from 'util';
-const question: (str: string) => Promise<string> = util.promisify(rl.question).bind(rl);
 
 import validPackage from "validate-npm-package-name";
 
@@ -24,12 +23,9 @@ import {execSync} from "child_process";
 
 const execSyncToString = (cmd: string) => execSync(cmd).toString('utf-8').trim();
 
-export async function initPackage(folderName: string) {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
+const question: (str: string) => Promise<string> = util.promisify(rl.question).bind(rl) as unknown as (str: string) => Promise<string>;
 
+export async function initPackage(folderName: string) {
     if (!validPackage(folderName)) {
         throw Error('Package name must be in the form of word(-word)*.');
     }
@@ -47,7 +43,7 @@ export async function initPackage(folderName: string) {
     unlinkSync(join(dirPath, 'tests', 'typescript-package-template.test.ts'));
     writeFileAsStringSync(join(dirPath, 'tests', `${folderName}.test.ts`), '');
 
-    const desc: tring = await question('Enter a description for the package: ');
+    const desc: string = await question('Enter a description for the package: ');
     const author = await question('Package Author: ');
     const keywords = await question('Enter package keywords separated by space: ');
     const git = await question('Github url (no .git, optional): ');

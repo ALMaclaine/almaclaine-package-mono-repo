@@ -1,4 +1,4 @@
-import {validateEmail as validateEmailBoolean, InvalidEmail} from '@almaclaine/general-utils'
+import {validateEmail as validateEmailBoolean, InvalidEmail} from '@almaclaine/general-utils';
 import {ALMError} from "@almaclaine/error-utils";
 import {appendFileSync} from "fs";
 
